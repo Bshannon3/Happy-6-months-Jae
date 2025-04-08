@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our 6 Month Journey</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0b1e36;
+      color: #ffc0cb;
+    }
+
+    .page {
+      display: none;
+      text-align: center;
+      max-width: 600px;
+      padding: 20px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      animation: fadeIn 0.8s ease;
+    }
+
+    .active {
+      display: block;
+    }
+
+    h1 {
+      color: #ffc0cb;
+      font-size: 2.3em;
+      margin-bottom: 10px;
+      animation: slideUp 1s ease;
+    }
+
+    .message {
+      margin: 20px 0;
+      font-size: 1.1em;
+      animation: fadeIn 1.2s ease;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      animation: zoomIn 1s ease;
+    }
+
+    .nav-buttons {
+      margin-top: 30px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .nav-buttons button,
+    .start-btn {
+      padding: 10px 20px;
+      background: #ff6b91;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .nav-buttons button:hover,
+    .start-btn:hover {
+      background: #e05682;
+      transform: scale(1.05);
+    }
+
+    .start-btn {
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    .hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .hearts span {
+      position: absolute;
+      display: block;
+      color: #ff8ebf;
+      font-size: 22px;
+      opacity: 0.4;
+      animation: floatUp 5s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+      50% { opacity: 0.7; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hearts" id="heartContainer"></div>
+
+  <!-- Title Page -->
+  <div class="page active" id="titlePage">
+    <h1>Jae,</h1>
+    <p class="message">Let’s go on a little journey through some of my favorite memories together so far...</p>
+    <button class="start-btn" onclick="startJourney()">Start</button>
+  </div>
+
+  <!-- Dynamic Pages -->
+  <div id="pages"></div>
+
+  <script>
+    const steps = [
+      { date: "September 10th, 2024", message: "This is when we met for the first time. I'll never forget the feeling of not being able to control my smile when I first saw you. I'll never forget what you were wearing. I'll never forget hearing the sound of your voice for the first time, I'll never forget hearing the sound of your laugh for the first time. From the moment I first met you I knew that you were the person I wanted to have in my life. Meeting you changed my life in so many ways and I am so so grateful for that. You're personality was one I quickly realized was one to die for, I have not and never will never meet anyone like you. You are the most kind hearted, genuine, beautiful person I have ever met. I fell for that personality of your so fast, and so hard", img: "JAE1.jpeg" },
+      { 
+        date: "September 10, 2024", 
+        message: "This is where everything changed. This link takes you back to where we first met. Somehow, I managed to get completely lost trying to find the place—took the wrong highway, made at least two questionable turns, and had a minor panic about whether I’d ever make it. Google Maps gave up on me at one point. And yet, I still somehow arrived only a few minutes late. A miracle, honestly. I was ridiculously nervous pulling up next to you, heart pounding like I’d just run a marathon—but then I saw you. You were so incredibly beautiful (And you still are and always will be incredibly beautiful), and that moment became one I’ll never forget", 
+        img: "JAE2.jpeg",
+        link: "https://earth.google.com/web/search/49.13167,-122.31833"
+      },
+      { date: "September 28, 2024", message: "This was the second time we met, and our first full day spent together—and honestly, it felt like we had known each other for so much longer. I’ll never forget how comfortable it felt, how easy it was just being around you. One of my favorite memories from that day is how you completely kicked my ass in pool. I went in thinking I had a shot, but you made sure to humble me quick. And then there was the punching bag game—you almost beat my score, and I’m still holding onto that narrow win like a trophy. I'll also never forget how you totally knocked me out of the park on the shooting game, you're more American than I am. But really, it wasn’t about who won or lost. It was about the laughter, the playful competitiveness, and the way everything felt so natural between us. That day wasn’t just fun—it was the start of something that felt real. Getting to spend time with you, see your smile up close, hear your laugh—it meant more to me than words can ever describe. I knew then that this was something special", img: "JAE3.jpeg" },
+      { date: "October 6, 2024", message: "This is the day we shared our first kiss. I absolutely love this memory and it never fails to bring a smile to my face. I'll never forget how I didn't know my eyes were supposed to be closed. I'll never forget how our first kiss almost made me end up in the creek. You really did take me off my feet. I promised you it would be unforgettable and I think I kept that promise.  Still to this day I get butterflies every time we kiss, every time we hug, and I am so lucky to have that in my life. You bring out my inner kid and I genuinely get so excited to see you", img: "JAE4.jpeg" },
+      { date: "October 8, 2024", message: "This date marks a very special day, six months ago, I asked you to be my girlfriend. I got down on one knee, heart racing, and gave you that gigantic ring (which absolutely broke the bank, by the way). And you said yes. That moment changed everything for me. I was overwhelmed with happiness, and I still am every single day. You mean the world to me. With each passing day, I find myself falling more deeply in love with you. You’re not just my girlfriend, you’re my best friend, my peace, my joy, and the person I want to grow with for the rest of my life. I’m so proud to call you mine. I genuinely thank God for you every day. You’re my answered prayer. I don’t know what I did to deserve someone as incredible as you. You’re one of a kind, so full of love, strength, beauty, and grace. There’s no one else on this earth who could ever compare to you. You are, without a doubt, the best girlfriend I could ever ask for, and then some. I love you more than words can ever say. Asking you to be my girlfriend was the best thing I’ve ever done, and I know this memory is going to stick with me forever", img: "JAE5.jpeg" },
+      { date: "October 31, 2024", message: "This was, without a doubt, my favorite Halloween ever. I think about it all the time, it’s one of those memories that just sticks with you in the best way. I’ll never forget the chaos of that night: standing in a random parking lot, taking my pants off without hesitation, handing them to you like it was the most normal thing in the world, and then turning a winter coat into the most ridiculous makeshift skirt. And honestly? I totally killed that look. But what made it unforgettable wasn’t just the laughs or the spontaneity, it was seeing your face light up when you realized you could actually go trick-or-treating. The pure excitement in your eyes, the way your inner kid came alive, that moment was everything. It reminded me how beautiful it is to be with someone who embraces joy so fully. I’m so thankful it all worked out the way it did. Sharing that moment with you, feeling the laughter, love, and magic in the air, it’s something I’ll hold onto forever. I wouldn’t trade it for anything", img: "JAE6.jpeg" },
+      { date: "November 18, 2024", message: "This day was the first time we said 'I Love You' to each other. My heart skipped a beat when you first said it, I was waiting to say it for so long. I fell for you quick, really quick, and hearing you say I love you lit up my whole world. Now we haven't gone a day without saying it and that means the world to me. I love you so incredibly much and I really do find myself falling for you more and more every day. I wanted to say it so much sooner and you beat me to it, and it meant everything to hear you say that to me. I love you Jae", img: "JAE7.jpeg" },
+      { date: "December 23, 2024", message: "This was our first ‘Christmas’ together, and it meant more to me than I can put into words. You were the first person I’ve ever made a homemade gift for, and honestly, I loved every second of it. There was something so special about creating something with you in mind, something that, to me, reflected how beautiful you are and how deeply I love you. You were also the first person outside of my family to ever give me a Christmas gift, and that alone made this holiday unforgettable. The painting you gave me? It absolutely means the world to me. I see it every day, and every time I look at it, I feel seen, understood, and loved in a way I’ve never experienced before. Knowing you poured your heart into that gift just makes me love it, and you, even more. I’m so proud to have it hanging on my wall. It’s not just an incredible piece of art; it’s a reminder of you, of us, and of a moment in time I’ll never forget. I’m beyond lucky to have you", img: "JAE8.jpeg" },
+      { date: "January 26, 2025", message: "This was the day we had our photos taken—something that may seem simple on the surface, but to me, it was so much more. It wasn’t just about posing and smiling for the camera; it was about capturing a moment in time that I’ll never forget. Every photo holds a story, a memory, a feeling that words can’t quite express. Looking back at them brings me a sense of warmth and nostalgia. I see joy in our eyes, the comfort of togetherness, and the unspoken connection we share. These photos aren’t just images; they’re pieces of my heart, frozen in time. I will treasure them for the rest of my life, because they mean more to me than I could ever fully explain. They are reminders of love, of laughter, and of a day that will always live on in my memory", img: "JAE9.jpeg" },
+      { date: "February 1, 2025", message: "You were there for me during one of the most overwhelming moments of my life—when my old car completely gave out and I was left scrambling, not knowing what to do. I was stressed, anxious, and everything felt like it was falling apart all at once. But through all that chaos, you showed up. You stood by me while I navigated the mess of finding a new car under pressure, when my mind was racing and my emotions were all over the place. It wasn’t just about the car—it was about the weight of everything hitting me at once. And somehow, you made it feel manageable. You gave me stability when I felt like I was losing control. But what means even more is that you stayed by my side after that moment too. When things continued to crash down around me, you were still there. You didn’t turn away. You supported me, encouraged me, and reminded me that I didn’t have to go through it all alone. That kind of unwavering support—it’s rare, and I don’t take it for granted. You were there when I needed someone the most, and that means the world to me. I’ll never forget it. Thank you fro everything you've done for me and everything you continue to do for me, it means the world to me", img: "JAE10.jpeg" },
+      { date: "March 4, 2025", message: "Our first road trip together—what a memory. I had the absolute best time with you, and honestly, you were the most amazing company I could’ve ever hoped for. Being on the road with you, laughing, talking, sharing music and snacks—it made everything feel lighter, freer, and just right. It’s moments like those that stay with you forever. I’ll never forget the two of us sipping on those giant slushies like it was the best idea ever, even as we both realized we were about to burst from needing to pee—with at least 30 minutes still to go. And yet, we just kept drinking them, laughing at how ridiculous the situation was. That moment is burned into my memory in the best way. And of course… the infamous chicken incident. I don’t think I’ll ever forget how those stubborn little wings managed to wreck you. We went from excited to eat something to a full-blown survival mission. As terrible as you felt, you somehow still managed to make me laugh through it all. I’m sorry it made you so sick—but even that messy moment turned into something unforgettable, just because I was experiencing it with you. More than just the funny stories or mishaps, what sticks with me the most is the feeling of having you by my side. Knowing I could just be myself, laugh until my stomach hurt, and make new memories with someone who means so much to me—that’s what made this trip so special. I’ll always hold onto this adventure, and I can’t wait for the next one", img: "JAE11.jpeg" },
+      { date: "You Mean Everything To Me", message: "If the stars fell silent, lost in the night, And the heavens dimmed their silver light, If the sun forgot to rise and shine, I’d still be fine—because you are mine. When shadows stretch and hope feels small, When the world forgets to turn at all, I’d find my way through every dark fight, Because in my soul, you burn so bright. You are my compass, my steady flame, The gentle whisper that calls my name. In your eyes, I see skies that never end— Lover, soulmate, my best friend. You mean everything, in every way— More than words could ever say. So even if the universe falls apart, I’ll still find you, for you are the light of my heart", img: "JAE12.jpeg" },
+      { date: "I Cherish Every Single Second Spent With You", message: " I want you to know how lucky I am to have you in my life, and I just want to say how much I genuinely cherish every single second we spend together. Whether we’re out making memories or just sitting quietly side by side, those moments mean the world to me. You bring a kind of peace, warmth, and happiness into my life that I didn’t even know I was missing until I met you. It’s the way you laugh, the way you look at me, the way you care—everything about you feels like home. Time with you doesn’t just pass, it becomes something I hold onto, something I replay in my mind whenever we’re apart. You make the ordinary feel extraordinary just by being there. Even the smallest things—our inside jokes, late-night talks, or simply holding your hand—become unforgettable when I’m with you. I constantly find myself wishing I could freeze time when I’m with you, just to make those moments last a little longer. You’ve changed my life in such a beautiful way, and I’ll never take a second of it for granted", img: "JAE13.jpeg" },
+      { date: "I Am So Proud Of You", message: "I just want you to know how incredibly proud I am of you. Life hasn’t always been fair to you, it’s thrown you challenges that most people wouldn’t even know how to face. But the way you handle it all, with such strength, grace, and quiet resilience, leaves me in absolute awe. You never let the weight of the world dim your light. Even on your hardest days, you find a way to show up, to care, to love, and to keep moving forward. That kind of strength isn’t common, and it’s one of the many reasons I admire you so deeply. You inspire me every single day to be better, to stay grounded, and to face my own challenges with more courage. I know it’s not easy, and you don’t always get the recognition you deserve, but I see you. I see everything you’ve overcome, everything you continue to fight through—and I’m here, cheering for you, always. I hope you never forget how incredible you are, because I never do", img: "JAE14.jpeg" },
+      { date: "I Love You More Than Forever Could Ever Measure", message: "I love you more than forever could ever measure. It’s a love that grows every single day, even when I already think it’s as big as it could possibly be. You’ve become the best part of my life, the person I look forward to seeing, hearing, holding, and being close to. Every time we part, even just for a little while, it gets harder and harder to say goodbye. That’s how I know this is real—because nothing feels right without you. I carry you with me in everything I do, and I find myself counting down the moments until I’m back by your side. I’m so, so lucky to have you—someone who makes even the quietest moments feel full of love and meaning. And I can’t wait to spend forever with you. A lifetime still doesn’t feel long enough, but I’ll take every second I can get, just to love you the way you deserve", img: "JAE15.jpeg" },
+      { date: "Forever & Always", message: "This is only the beginning, Jae. Thank you for the most beautiful 6 months of my life. I have enjoyed every single second with you and I genuinely can't wait to build a future with you. I can't wait to move in together. I can't wait to get down on one knee, to ask you to spend forever with me. I can't wait to call you my fiancé, to plan a wedding together. I can't wait to watch you walk down the aisle towards me, to meet you at the alter and promise forever with you. I can't wait to call you my wife and to wake up next to you each day. I can't wait to go through this game of life with you. You are the most amazing girlfriend in the entire world and you are far more than I could have ever asked for. You have given me a lifetime of memories in these past 6 months and I am so so excited the many many more months spent with you. I love you endlessly.", img: "JAE16.jpeg" }
+    ];
+
+    const pagesContainer = document.getElementById('pages');
+    const titlePage = document.getElementById('titlePage');
+    let current = 0;
+
+    function startJourney() {
+      titlePage.classList.remove('active');
+      renderPage(current);
+    }
+
+    function renderPage(index) {
+      const step = steps[index];
+      let pageContent = `
+        <div class="page active">
+          <h1>${step.date}</h1>
+          <div class="message">${step.message}</div>
+          <img src="${step.img}" alt="Photo ${index + 1}" />
+      `;
+      
+      if (step.link) {
+        pageContent += `<p><a href="${step.link}" target="_blank" style="color:#ffc0cb; font-size: 1.1em;">Click here to see where it all started!</a></p>`;
+      }
+
+      pageContent += `
+        <div class="nav-buttons">
+          <button onclick="prevStep()" ${index === 0 ? 'disabled' : ''}>&larr; Back</button>
+          ${index < steps.length - 1 ? `<button onclick="nextStep()">Next &rarr;</button>` : ''}
+        </div>
+      </div>
+      `;
+
+      pagesContainer.innerHTML = pageContent;
+    }
+
+    function nextStep() {
+      if (current < steps.length - 1) {
+        current++;
+        renderPage(current);
+      }
+    }
+
+    function prevStep() {
+      if (current > 0) {
+        current--;
+        renderPage(current);
+      }
+    }
+
+    // Subtle hearts floating
+    const heartContainer = document.getElementById("heartContainer");
+    function createHeart() {
+      const heart = document.createElement("span");
+      heart.innerHTML = "♥";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 2 + 5) + "s";
+      heart.style.fontSize = (Math.random() * 10 + 20) + "px";
+      heartContainer.appendChild(heart);
+      setTimeout(() => heart.remove(), 10000);
+    }
+
+    setInterval(() => {
+      if (document.hasFocus() && Math.random() < 0.3) {
+        createHeart();
+      }
+    }, 1000);
+  </script>
+
+</body>
+</html>
